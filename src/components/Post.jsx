@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal } from 'lucide-react';
-
-export default function Post({ username, userImage, image, caption, likes, comments, created_at}) {
+    
+export default function Post({ user, content_url, caption, likes, comments, created_at, shares}) {
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(likes);
 
@@ -13,16 +13,16 @@ export default function Post({ username, userImage, image, caption, likes, comme
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-lg mb-6">
       <div className="flex items-center justify-between p-3">
-          <a href={`/${username}`} className="flex">
+          <a href={`/${user.username}`} className="flex">
             <div className="flex items-center space-x-3">
-              <img src={userImage} alt={username} className="w-8 h-8 rounded-full object-cover" />
-              <span className="font-semibold text-white">{username}</span>
+              <img src={user.profile_image_url} alt={user.username} className="w-8 h-8 rounded-full object-cover" />
+              <span className="font-semibold text-white">{user.username}</span>
             </div>
           </a>
         <MoreHorizontal className="w-5 h-5 cursor-pointer text-white" />
       </div>
 
-      <img src={image} alt="Post" className="w-100 h-100 object-cover max-h-[600px] p-1"  onDoubleClick={handleLike}/>
+      <img src={content_url} alt="Post" className="w-100 h-100 object-cover max-h-[600px] p-1"  onDoubleClick={handleLike}/>
 
       <div className="p-3">
         <div className="flex items-center justify-between mb-3">

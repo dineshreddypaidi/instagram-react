@@ -8,11 +8,11 @@ export const login = async (data) => {
   return api.post("user/login", data);
 };
   
-export const userData = async () => {
+export const LoggedUserData = async () => {
   console.log(api.defaults.headers);
   return api.get("user");
 };
 
-export const userFeed = async () => {
-  return api.get("user/feed");
+export const userFeed = async (page) => {
+  return api.get(`user/feed?page=${page}`);
 }
